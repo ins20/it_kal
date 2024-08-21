@@ -16,7 +16,7 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-11/12 md:w-8/12">
+    <div className="flex flex-col w-11/12 md:w-8/12 p-4 xl:p-0">
       <Header />
       <Carousel>
         <CarouselContent>
