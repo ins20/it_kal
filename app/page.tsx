@@ -16,7 +16,7 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-11/12 md:w-8/12 p-4 xl:p-0">
+    <div className="flex flex-col w-11/12 md:w-8/12 p-4 md:p-0">
       <Header />
       <Carousel>
         <CarouselContent>
@@ -71,7 +71,7 @@ export default function Home() {
 
 function CarouselPage(props: React.PropsWithChildren<{}>) {
   return (
-    <div className="w-full p-10 h-[700px] bg-gradient-to-r from-deepBlue to-accentBlue rounded-4xl drop-shadow-sm md:drop-shadow-2xl">
+    <div className="w-full p-10 h-[500px] md:h-[700px] bg-gradient-to-r from-deepBlue to-accentBlue rounded-4xl drop-shadow-sm md:drop-shadow-2xl">
       {props.children}
       <Image
         src="/frozen.png"
