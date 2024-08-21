@@ -33,7 +33,7 @@ export default function Header() {
           <Skeleton className="w-28 h-4" />
         </div>
       ) : (
-        <nav>
+        <nav className="flex">
           <Button asChild variant={"link"} className="text-white">
             <Link href={"/login"}>Авторизоваться</Link>
           </Button>
