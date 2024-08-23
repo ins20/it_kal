@@ -80,7 +80,6 @@ export function Login() {
 
 function Confirm(props: ConfirmProps) {
   const confirm = useSWRConfig();
-  const subscribe = useSWRConfig();
 
   const back = useBack();
 
@@ -105,17 +104,13 @@ function Confirm(props: ConfirmProps) {
         "/users/me",
         api.post<User>("/auth/confirm/", values)
       );
-      if (user?.data) {
-        subscribe.mutate(
-          `/users/${user.data.oid}/subscribe/`,
-          api.patch(`/users/${user.data.oid}/subscribe/`)
-        );
+      if (user?.data.oid) {
         localStorage.setItem("user_id", user.data.oid);
         back();
       }
     } catch (error: any) {
       form.reset();
-      form.setError("otp", { message: 'Неверный код' });
+      form.setError("otp", { message: "Неверный код" });
     }
   }
   return (

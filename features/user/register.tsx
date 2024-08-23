@@ -16,46 +16,39 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { api } from "@/lib/api";
-import useSWR, { useSWRConfig } from "swr";
+import { useSWRConfig } from "swr";
 import { Loader2Icon } from "lucide-react";
 
-export function Subscribe() {
+export function Register() {
   const router = useRouter();
 
-  const user = useSWR(
-    "/users/me",
-    async () => api.get(`/users/${localStorage.getItem("user_id")}/`),
-    {
-      shouldRetryOnError: false,
-    }
-  );
-
-  const subscribe = useSWRConfig();
+  const create = useSWRConfig();
 
   const formSchema = z.object({
     username: z
       .string()
       .max(10, { message: "Имя должно быть не более 10 символов" }),
     email: z.string().email({ message: "Некорректная почта" }),
-    telegram: z.string(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: user.data?.data?.username || "",
-      email: user.data?.data?.email || "",
-      telegram: "",
+      username: "",
+      email: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      await subscribe.mutate(
-        `/users/me`,
-        api.patch(`/users/${user.data?.data?.oid || ""}/subscribe/`)
+      await create.mutate(
+        "/users/",
+        api.post("/users/", {
+          ...values,
+          user_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        })
       );
-      router.back();
+      router.push("/login");
     } catch (error: any) {
       const message = error?.response?.data.detail;
       if (message === "User already exists") {
@@ -99,23 +92,11 @@ export function Subscribe() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="telegram"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input placeholder="Телеграм" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <Button type="submit" disabled={form.formState.isSubmitting}>
           {form.formState.isSubmitting && (
             <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
           )}
-          Подписаться
+          Зарегистрироваться
         </Button>
       </form>
     </Form>

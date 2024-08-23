@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className="flex flex-col w-11/12 md:w-8/12 p-4 md:p-0">
       <Header />
-      <Carousel>
+      <Carousel >
         <CarouselContent>
           <CarouselItem className="md:p-20">
             <CarouselPage>
@@ -35,25 +35,11 @@ export default function Home() {
                 компании «Киберпротект», вы сможете обезопасить себя и своих
                 близких в цифровой среде.{" "}
               </h2>
-              <Image
-                src={"/blue-girl.png"}
-                alt="blue-girl"
-                width={290}
-                height={600}
-                className="absolute -z-10 bottom-0 right-0 brightness-50 object-cover"
-              />
             </CarouselPage>
           </CarouselItem>
           <CarouselItem className="md:p-20">
             <CarouselPage>
               <Calendar />
-              <Image
-                src={"/red-girl.png"}
-                alt="red-girl"
-                width={360}
-                height={600}
-                className="absolute -z-10 bottom-0 right-0 brightness-50 object-cover"
-              />
             </CarouselPage>
           </CarouselItem>
           <CarouselItem className="md:p-20">

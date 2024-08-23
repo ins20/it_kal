@@ -8,11 +8,10 @@ export default function Unsubscribe() {
   const unsubscribe = useSWRConfig();
   async function onClick() {
     try {
-      unsubscribe.mutate(
+      await unsubscribe.mutate(
         "/users/me",
         api.patch(`/users/${localStorage.getItem("user_id")}/unsubscribe/`)
       );
-      localStorage.removeItem("user_id");
     } catch (error) {}
   }
   return (

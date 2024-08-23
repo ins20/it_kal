@@ -1,11 +1,20 @@
+"use client";
+
+import { checkRead } from "@/actions";
 import { Button } from "@/components/ui/button";
 import db from "@/db.json";
 import { cn, isAvailable } from "@/lib/utils";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function page({ params }: { params: { id: string } }) {
   const data = db[+params.id - 1];
-
+  useEffect(() => {
+    const userId = localStorage.getItem("user_id");
+    if (userId) {
+      checkRead(userId, +params.id - 1);
+    }
+  }, []);
   return (
     <div className="text-white h-full md:w-1/2 rounded-4xl drop-shadow-2xl p-10 backdrop-blur-md">
       {isAvailable(+params.id) ? (

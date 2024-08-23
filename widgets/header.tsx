@@ -25,7 +25,23 @@ export default function Header() {
       {user.data?.data ? (
         <div className="text-white">
           {user.data.data.email}
-          <Unsubscribe />
+          {user.data.data.is_subscribed ? (
+            <Unsubscribe />
+          ) : (
+            <Button asChild variant={"link"} className="text-white">
+              <Link href={"/subscribe"}>Подписаться</Link>
+            </Button>
+          )}
+          <Button
+            onClick={() => {
+              localStorage.clear();
+              user.mutate(null as any);
+            }}
+            variant={"link"}
+            className="text-white"
+          >
+            Выйти
+          </Button>
         </div>
       ) : user.isLoading ? (
         <div className="flex gap-2">
@@ -35,10 +51,10 @@ export default function Header() {
       ) : (
         <nav className="flex">
           <Button asChild variant={"link"} className="text-white">
-            <Link href={"/login"}>Авторизоваться</Link>
+            <Link href={"/login"}>Войти</Link>
           </Button>
           <Button asChild variant={"link"} className="text-white">
-            <Link href={"/subscribe"}>Подписаться</Link>
+            <Link href={"/register"}>Зарегистрироваться</Link>
           </Button>
         </nav>
       )}
