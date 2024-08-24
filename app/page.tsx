@@ -28,7 +28,7 @@ export default function Home() {
               </h2>
               <h2
                 className={
-                  "text-white text-base text-right mt-10 xl:text-4xl xl:mt-20"
+                  "text-white text-base text-center mt-10 xl:text-4xl xl:mt-20"
                 }
               >
                 Шаг за шагом, выполняя простые советы и рекомендации экспертов
