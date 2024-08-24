@@ -30,8 +30,9 @@ function AboutProject(props: props) {
 export default function About() {
   return (
     <div
+       id="scrollAbout"
       className={cn(
-        "h-5/6 overflow-y-scroll xl:overflow-y-auto space-y-10 mt-5",
+        "h-5/6 pr-2 xl:pr-0 overflow-y-scroll xl:overflow-y-auto space-y-10 mt-5",
         "md:h-full md:space-y-0 md:h-min md:h-full md:flex items-center justify-around"
       )}
     >
