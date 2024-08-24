@@ -45,7 +45,7 @@ export default function RootLayout({
           className="absolute w-full h-full -z-20 top-0 left-0 brightness-50 object-cover"
         />
         <Toaster />
-        <footer className="absolute text-white flex justify-between items-center bottom-0 bg-deepBlue w-full px-4">
+        <footer className="fixed text-white flex justify-between items-center bottom-0 bg-deepBlue w-full px-4">
           <span>©Киберпротект</span>
           <span>2024</span>
         </footer>
