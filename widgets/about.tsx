@@ -20,7 +20,7 @@ function AboutProject(props: props) {
         height={1080}
       />
       <br />
-      <h2>{props.title}</h2>
+        <a href={props.site}>{props.title}</a>
       <br />
       <p className="text-sm text-secondaryLightBlue">{props.description}</p>
     </div>
