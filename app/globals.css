@@ -67,3 +67,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+#scrollAbout::-webkit-scrollbar {
+  width: 5px;
+}
+#scrollAbout::-webkit-scrollbar-thumb {
+  background: lightskyblue;
+  width: 5px;
+}
+#scrollAbout::-webkit-scrollbar-track-piece {
+  width: 2px;
+  background: #ffffff;
+}
