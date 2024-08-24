@@ -42,7 +42,7 @@ export default function RootLayout({
           width={1920}
           height={1080}
           objectFit="cover"
-          className="absolute w-full h-full -z-20 top-0 left-0 brightness-50 object-cover"
+          className="absolute w-full h-screen -z-20 top-0 left-0 brightness-50 object-cover"
         />
         <Toaster />
         <footer className="fixed text-white flex justify-between items-center bottom-0 bg-deepBlue w-full px-4">
