@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,6 +44,11 @@ export default function RootLayout({
           objectFit="cover"
           className="absolute w-full h-full -z-20 top-0 left-0 brightness-50 object-cover"
         />
+        <Toaster />
+        <footer className="absolute text-white flex justify-between items-center bottom-0 bg-deepBlue w-full px-4">
+          <span>©Киберпротект</span>
+          <span>2024</span>
+        </footer>
       </body>
     </html>
   );

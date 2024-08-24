@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -18,10 +17,10 @@ import { Input } from "@/components/ui/input";
 import { api } from "@/lib/api";
 import { useSWRConfig } from "swr";
 import { Loader2Icon } from "lucide-react";
+import useBack from "@/hooks/use-back";
 
 export function Register() {
-  const router = useRouter();
-
+  const back = useBack();
   const create = useSWRConfig();
 
   const formSchema = z.object({
@@ -48,7 +47,7 @@ export function Register() {
           user_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         })
       );
-      router.push("/login");
+      back();
     } catch (error: any) {
       const message = error?.response?.data.detail;
       if (message === "User already exists") {
@@ -57,7 +56,7 @@ export function Register() {
       }
       if (
         message ===
-        "This email address does not exist NikitaIbragimov20@yandex.ru"
+        `This email address does not exist ${values.email}`
       ) {
         form.setError("email", {
           message: "Почта не существует",

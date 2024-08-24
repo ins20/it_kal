@@ -3,30 +3,36 @@
 import { ShareIcon } from "lucide-react";
 import React from "react";
 import { Button } from "./ui/button";
+import { toast } from "./ui/use-toast";
 
 type Props = {
   id: string;
 };
 
 export default function Share({ id }: Props) {
-  const [isCopied, setIsCopied] = React.useState(false);
+  const userAgent = navigator.userAgent.toLowerCase();
+  const isMobile =
+    /mobile|iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(
+      userAgent
+    );
   return (
     <>
       <Button
-        size={"icon"}
-        variant={"outline"}
+        size={isMobile ? "icon" : "default"}
+        variant={isMobile ? "outline" : "link"}
         onClick={() => {
-          if (navigator.canShare()) {
+          if (isMobile) {
             navigator.share({ url: `https://it-kal.vercel.app/${id}` });
           } else {
             navigator.clipboard.writeText(`https://it-kal.vercel.app/${id}`);
-            setIsCopied(true);
+            toast({
+              title: "Ссылка скопирована",
+            });
           }
         }}
       >
-        <ShareIcon className="h-6 w-6" />
+        {isMobile ? <ShareIcon className="h-6 w-6" /> : "Cкопировать"}
       </Button>
-      {isCopied && <p className="text-xs">Ссылка скопирована</p>}
     </>
   );
 }

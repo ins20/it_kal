@@ -61,7 +61,7 @@ export default function Calendar() {
                   className={cn(
                     "rounded-full border-2 border-white text-white",
                     "w-12 h-12",
-                    data.includes(index) ? "border-yellow-300" : "border-white"
+                    data?.includes(index) ? "border-yellow-300" : "border-white"
                   )}
                 >
                   {index + 1}
@@ -87,7 +87,7 @@ export default function Calendar() {
                   className={cn(
                     "flex items-center justify-center w-20 h-20",
                     "rounded-full border-2 text-white hover:bg-deepBlue",
-                    data.includes(index) ? "border-yellow-300" : "border-white"
+                    data?.includes(index) ? "border-yellow-300" : "border-white"
                   )}
                 >
                   {index + 1}

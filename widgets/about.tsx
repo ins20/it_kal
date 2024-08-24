@@ -11,7 +11,7 @@ type props = {
 
 function AboutProject(props: props) {
   return (
-    <div className="text-white md:w-96 h-full">
+    <div className="text-white md:w-96 xl:h-full">
       <Image
         className={"rounded-2xl"}
         src={props.image}
@@ -31,7 +31,7 @@ export default function About() {
   return (
     <div
       className={cn(
-        "h-5/6 overflow-y-auto space-y-10 mt-5",
+        "h-5/6 overflow-y-scroll xl:overflow-y-auto space-y-10 mt-5",
         "md:h-full md:space-y-0 md:h-min md:h-full md:flex items-center justify-around"
       )}
     >
